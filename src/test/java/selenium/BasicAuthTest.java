@@ -1,7 +1,10 @@
 package selenium;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.HasAuthentication;
+import org.openqa.selenium.UsernameAndPassword;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class BasicAuthTest extends BaseTest {
@@ -14,7 +17,7 @@ public class BasicAuthTest extends BaseTest {
     public void basicAuth(){
 
         // This "HasAuthentication" interface is the key!
-        HasAuthentication authentication (HasAuthentication) driver;
+        HasAuthentication authentication = (HasAuthentication) driver;
 
         // You can either register something for all sites
         authentication.register(() -> new UsernameAndPassword("admin", "admin"));
@@ -22,7 +25,7 @@ public class BasicAuthTest extends BaseTest {
     }
 
     @Test
-    public void basicAuthTest() {
+    public void basicAuthTest(){
         driver.findElement(BASIC_AUTH).click();
         Assert.assertTrue(driver.findElement(SUCCESS_AUTH).isDisplayed(), "Message is not displayed");
     }
