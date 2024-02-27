@@ -10,7 +10,7 @@ public class BaseTest {
     protected final String URL = "https://the-internet.herokuapp.com/";
     protected final String PRECISE_TEXT_XPATH = "//*[text()='%s']";
     protected final String PARTICULAR_TEXT_XPATH = "//*[contains(text(),'%s')]";
-    protected final String RELATIVE_RESOURCE_PATH = "src/test/resources/";
+    protected final String RELATIVE_RESOURCE_PATH = "src/test/";
 
 
     @BeforeMethod
