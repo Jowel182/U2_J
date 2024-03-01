@@ -1,5 +1,7 @@
 package selenium;
 
+import org.awaitility.Awaitility;
+import org.awaitility.core.ConditionTimeoutException;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -7,7 +9,6 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
-
 
 
 public class FileDownloadTest extends BaseTest {
@@ -42,7 +43,7 @@ public class FileDownloadTest extends BaseTest {
         }
         return true;
 
-    } */
+    }*/
     // todo: delete file
 
     public void deleteFile(){

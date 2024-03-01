@@ -7,10 +7,12 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
     protected WebDriver driver;
-    protected final String URL = "https://the-internet.herokuapp.com/";
-    protected final String PRECISE_TEXT_XPATH = "//*[text()='%s']";
+    protected final String URL = "https://www.wikipedia.org/";
+
+    protected final String
+            PRECISE_TEXT_XPATH = "//*[text()='%s']";
     protected final String PARTICULAR_TEXT_XPATH = "//*[contains(text(),'%s')]";
-    protected final String RELATIVE_RESOURCE_PATH = "src/test/";
+    protected final String RELATIVE_RESOURCE_PATH = "C:/Users/Lenovo/Download";
 
 
     @BeforeMethod
@@ -19,6 +21,8 @@ public class BaseTest {
         driver.get(URL);
         driver.manage().window().maximize();
     }
+
+
 
     @AfterMethod
     public void teardown() {
