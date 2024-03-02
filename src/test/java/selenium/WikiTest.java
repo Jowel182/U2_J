@@ -2,41 +2,24 @@ package selenium;
 
 import org.awaitility.Awaitility;
 import org.awaitility.core.ConditionTimeoutException;
-import org.jetbrains.annotations.NotNull;
-import org.junit.BeforeClass;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-
 import java.io.File;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
-
-import static org.awaitility.Awaitility.*;
-import static org.awaitility.Duration.*;
 import static java.util.concurrent.TimeUnit.*;
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
 
 public class WikiTest extends BaseTest{
 
     private final By INPUT = By.xpath("//input[@id='searchInput']");
     private final By SEARCHB = By.xpath("//button[@type='submit']");
     private final String ALBERT = "Albert Einstein";
-   private final By TOOLS = By.xpath("//input[@id='vector-page-tools-dropdown-checkbox']");
-
-
+    private final By TOOLS = By.xpath("//input[@id='vector-page-tools-dropdown-checkbox']");
     private final By DOWNLOAD_OP = By.xpath("//span[normalize-space()='Descargar como PDF']");
     private final By DOWNLOAD_B = By.xpath("//button[@type='submit']");
 
-     private final By FILE_ELEMENT = By.xpath("//div[@class='mw-electronpdfservice-selection-label-desc']");
-     private final String FILE_NAME = driver.findElement(FILE_ELEMENT).getAttribute("text"); //"Albert_Einstein.pdf";
-     private final String PATH = RELATIVE_RESOURCE_PATH + FILE_NAME ;
-     private final File downloadedFile = new File(PATH);
+
 
     @Test
     public void WikiT(){
@@ -54,6 +37,11 @@ public class WikiTest extends BaseTest{
         driver.findElement(DOWNLOAD_OP).click();
         driver.findElement(DOWNLOAD_B).click();
 
+
+        WebElement PDFNameElement = driver.findElement(By.className("mw-electronpdfservice-selection-label-desc"));
+        String fileName = PDFNameElement.getText();
+        String path = RELATIVE_RESOURCE_PATH + fileName;
+        File downloadedFile = new File(path);
 
         Assert.assertTrue(fileExists(downloadedFile), "File is not downloaded.");
 
@@ -79,6 +67,11 @@ public class WikiTest extends BaseTest{
 
     @AfterMethod
     public void deleteFile(){
+
+        WebElement PDFNameElement = driver.findElement(By.className("mw-electronpdfservice-selection-label-desc"));
+        String fileName = PDFNameElement.getText();
+        String path = RELATIVE_RESOURCE_PATH + fileName;
+        File downloadedFile = new File(path);
 
         if (downloadedFile.exists()){
 
