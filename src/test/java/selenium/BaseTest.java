@@ -12,7 +12,7 @@ public class BaseTest {
     protected final String
             PRECISE_TEXT_XPATH = "//*[text()='%s']";
     protected final String PARTICULAR_TEXT_XPATH = "//*[contains(text(),'%s')]";
-    protected final String RELATIVE_RESOURCE_PATH = "C:/Users/Lenovo/Download";
+    protected final String RELATIVE_RESOURCE_PATH = "C:/Users/Lenovo/Downloads/";
 
 
     @BeforeMethod
